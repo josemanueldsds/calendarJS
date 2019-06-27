@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.2.10",
     "rollup": "^1.16.2"
   },
   "dependencies": {
