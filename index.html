@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CALENDARIO</title>
+    <title>Document</title>
 </head>
+
 <body>
+    <style>
+        :root {
+            background-color: var(--colorBackground);
+            color: var(--colorText);
+            font-size: var(--font-bigt);
+        }
+    </style>
+    <cjs-timer>
+        <div id= "content"></div>
+    </cjs-timer>
     <cjs-date></cjs-date>
 
 
     <script nomodule src="build/bundle.js"></script> <!-- si es explorador viejo va por aqui -->
     <script type="module" src="./src/main.js"></script><!-- si es explorador nuevo va por aqui (porque soporta modulo)-->
 </body>
+
 </html>
