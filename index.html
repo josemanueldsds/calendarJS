@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +17,15 @@
         }
     </style>
     <cjs-timer>
-        <div id= "content"></div>
+        <div id="content"></div>
     </cjs-timer>
     <cjs-date></cjs-date>
-
+    <cjs-move action= "INCREMENT"></cjs-move>
+    <cjs-move action= "DECREMENT"></cjs-move>
 
     <script nomodule src="build/bundle.js"></script> <!-- si es explorador viejo va por aqui -->
-    <script type="module" src="./src/main.js"></script><!-- si es explorador nuevo va por aqui (porque soporta modulo)-->
+    <script type="module" src="./src/main.js"></script>
+    <!-- si es explorador nuevo va por aqui (porque soporta modulo)-->
 </body>
 
 </html>
