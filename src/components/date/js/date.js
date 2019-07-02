@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
+import { serviceDate } from "../service/service";
 
 export class cjsDate extends LitElement {
     static get properties() {
@@ -27,22 +28,30 @@ export class cjsDate extends LitElement {
   
     constructor() {
         super();
-        this.date = new Date();
+        this._serviceDate = new serviceDate();
     }
 
     render() {
-      return html `<p>${this.getActualDate(this.date)}</p>`;
+        return html`${this.dateTemplate}`;
     }
 
-    getActualDate(date){
-        let day = date.getDay(),
-        days = ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sábado'],
-        month = date.getMonth(),
-        months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"],  
-        actualDate = `${days[day]}, ${date.getDate()} de ${months[month]} de ${date.getFullYear()}`;
-        
-        return actualDate;
+    get dateTemplate() {
+        return html`<p>${this.date}</p>`;
     }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this._serviceDate.actualDate((date) => { 
+            this.date = date;
+        });
+    }
+
+    disconnectedCallback() {
+        this._serviceDate.dispose();
+        super.disconnectedCallback();
+    }
+
+    
   }
   
   customElements.define('cjs-date', cjsDate);
