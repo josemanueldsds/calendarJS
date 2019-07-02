@@ -3,7 +3,7 @@ import { ServiceTimer } from "../service/service";
 
 const INTERVAL_TIME = 1000;
 
-export class Timer extends LitElement {
+export class cjsTimer extends LitElement {
 
     static get properties() {
         return {
@@ -37,4 +37,4 @@ export class Timer extends LitElement {
     }
 }
 
-customElements.define('cjs-timer', Timer)
+customElements.define('cjs-timer', cjsTimer)
