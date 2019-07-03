@@ -7,7 +7,6 @@ export class cjsDate extends LitElement {
     }
     static get styles() {
         const mainColor = css`red`,
-              mainPadding = css`20px`,
 
               fontSmall = css`200`,
               fontNormal = css`400`,
@@ -17,7 +16,6 @@ export class cjsDate extends LitElement {
             :host { 
                 display: block;
                 color: ${mainColor}; 
-                padding: ${mainPadding};
                 font-weight: ${fontBold};
             }
             :host([hidden]) {
