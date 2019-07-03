@@ -29,11 +29,21 @@ export class serviceDays{
         }
         
         // return el array
-        this.myArraydays = callback(myArray.from(new myArray(this._getnumMonthDays(move)),(val,index)=>index+1));
+        this.myArraydays = callback(myArray.from(new myArray(this.getnumMonthDays(move)),(val,index)=>index+1));
     }
 
-    // calculo el mes y el año que se quiere dibujar, teniendo en cuenta si es el actual, el anterior o el siguiente
-    _getnumMonthDays(value){
+    // callback que devuelve un array con el mes y año 
+    monthYear(callback,move){
+        if (typeof callback !== "function") {
+            throw INVALID_CALLBACK_EXCEPTION;
+        }
+
+        // return el array
+        this.myArraydays = callback(this.getMonthDays(move));
+
+    } 
+
+    getMonthDays(value){
         this._date = new Date(now()); // dia actual
 
         if(value){
@@ -60,8 +70,18 @@ export class serviceDays{
             this._month = this._date.getMonth(); // mes actual
         }
 
+        return [this._month, this._year];
+
+    }
+
+    // calculo el mes y el año que se quiere dibujar, teniendo en cuenta si es el actual, el anterior o el siguiente
+    getnumMonthDays(value){
+        let monthYearArray = [];
+        // calculo el mes y el año solicitado
+        monthYearArray.push(this.getMonthDays(value));
+
         // calculo el num de dias del mes que se quiere
-        return this._numMonthDays = this._getDaysInMonth(this._month,this._year);
+        return this._numMonthDays = this._getDaysInMonth(monthYearArray[0][0],monthYearArray[0][1]);
         
 
     }

@@ -15,25 +15,39 @@ export class cjsDays extends LitElement{
 
     constructor() {
         super();
-            this._serviceDays = new serviceDays();
-        }
+        this._serviceDays = new serviceDays();
+    }
 
     render() {
         return html
         `
         <style>
             .container {
-                display: flex; 
-                border: solid 1px grey;
-                /*-webkit-flex-wrap: wrap;
-                flex-wrap: wrap;*/
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-flow: row wrap;
+                width: 200px;
+                height: 200px;
             } 
             .item {
+
                 border: solid 1px grey;
-                flex-grow: 1;
+                flex-grow: 0;
                 width: 100%;
                 text-align: center;
                 cursor: pointer;
+                padding: 5px;
+                width: 10%;
+                height: 10%;
+                line-height: 20px;
+                font-weight: bold;
+                text-align: center;
             }
             .item:hover{
                 background-color: grey;
@@ -42,9 +56,9 @@ export class cjsDays extends LitElement{
             
         </style>
         
-        <div class="container">
-            ${this.myArraydays.map(i => html`<div class="item">${i}</div>`)}
-        </div>`;
+        <ul class="container">
+            ${this.myArraydays.map(i => html`<li data-day=${i} class="item">${i}</li>`)}
+        </ul>`;
     }
     
     connectedCallback() {
@@ -56,7 +70,7 @@ export class cjsDays extends LitElement{
 
         // metodo para comprobar que funcionaria el metodo que se tiene que suscribir a redux,
         // BORRAR CUANDO SE LLAME A REDUX
-        //this.getMonthNumDays(move.DECREMENT);
+        this.getMonthNumDays(move.DECREMENT);
     }
 
     //metodo que se tiene que suscribir a redux, para pasarle el parametro move
