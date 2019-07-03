@@ -1,3 +1,13 @@
+/**
+ * Para crear este componente se llama a this.getMonthNumDays();
+ * de la clase serviceDays. Esto devuelve un array con el numero de dias del mes actual
+ * 
+ * Cuando las flechas 'move' se pulsen, deben llamar al metodo 
+ * this.getMonthNumDays(const); pasando la constante 'move.DECREMENT' o 'move.INCREMENT'.
+ * Esto devuelve un array con el numero de dias del mes anterior o posterior
+ * 
+ * Para que se seleccione un dia en el calendario, hay que añadirle al <item> la clase .is-selected 
+ */
 import { LitElement, html, css } from 'lit-element';
 import { serviceDays } from "./service";
 
@@ -37,7 +47,7 @@ export class cjsDays extends LitElement{
             } 
             .item {
 
-                border: solid 1px grey;
+                border: solid 1px #d2d2d2;
                 flex-grow: 0;
                 width: 100%;
                 text-align: center;
@@ -50,6 +60,10 @@ export class cjsDays extends LitElement{
                 text-align: center;
             }
             .item:hover{
+                background-color: #d2d2d2;
+                color: white;
+            }
+            .item.is-selected{
                 background-color: grey;
                 color: white;
             }
@@ -70,7 +84,7 @@ export class cjsDays extends LitElement{
 
         // metodo para comprobar que funcionaria el metodo que se tiene que suscribir a redux,
         // BORRAR CUANDO SE LLAME A REDUX
-        this.getMonthNumDays(move.DECREMENT);
+        //this.getMonthNumDays(move.DECREMENT);
     }
 
     //metodo que se tiene que suscribir a redux, para pasarle el parametro move

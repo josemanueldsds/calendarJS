@@ -1,3 +1,12 @@
+/**
+ * Para crear este componente se calcula el mes y año actual y se pinta en el DOM
+ * 
+ * Cuando las flechas 'move' se pulsen, deben llamar al metodo 
+ * 'this.getMonthYear(const);' pasando la constante 'move.DECREMENT' o 'move.INCREMENT'.
+ * Esto devuelve un array con el mes anterior o posterior, y su año correspondiente
+ * 
+ */
+
 let now = Date.now;
 
 import { LitElement, html, css } from 'lit-element';
@@ -42,7 +51,7 @@ export class cjsMonth extends LitElement{
         super.connectedCallback();
         // metodo para comprobar que funcionaria el metodo que se tiene que suscribir a redux,
         // BORRAR CUANDO SE LLAME A REDUX
-        this.getMonthYear(move.DECREMENT);
+        //this.getMonthYear(move.DECREMENT);
     }
 
     //metodo que se tiene que suscribir a redux, para pasarle el parametro move

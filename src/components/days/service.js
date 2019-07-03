@@ -54,15 +54,19 @@ export class serviceDays{
                     this._month = this._date.getMonth() + 1; 
                     // si el mes es 12, reseteo a 0
                     this._month = this._month === 12 ? 0 : this._month;
+                    
+                    this._year = this._month === 12 ? this._date.getFullYear() + 1 : this._year; 
                     break
                 case '0':
                     // decremento el num de mes [0-12]
                     this._month = this._date.getMonth() - 1;
                     // si el mes es 0, reseteo a 12
                     this._month = this._month === 0 ? 12 : this._month;
+
+                    this._year = this._month === 0 ? this._date.getFullYear() - 1: this._year; 
                     break
             };
-            this._year = this._date.getFullYear(); // año actual
+            
 
         }else{
             
@@ -76,12 +80,10 @@ export class serviceDays{
 
     // calculo el mes y el año que se quiere dibujar, teniendo en cuenta si es el actual, el anterior o el siguiente
     getnumMonthDays(value){
-        let monthYearArray = [];
-        // calculo el mes y el año solicitado
-        monthYearArray.push(this.getMonthDays(value));
+        let monthYearArray = this.getMonthDays(value); // calculo el mes y el año solicitado
 
         // calculo el num de dias del mes que se quiere
-        return this._numMonthDays = this._getDaysInMonth(monthYearArray[0][0],monthYearArray[0][1]);
+        return this._numMonthDays = this._getDaysInMonth(monthYearArray[0],monthYearArray[1]);
         
 
     }
